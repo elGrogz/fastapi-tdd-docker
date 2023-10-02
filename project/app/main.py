@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Depends
-from config import (  # can use app.config if depending on the file structure and where it is
+from app.config import (  # can use app.config if depending on the file structure and where it is
     get_settings,
     Settings,
 )
