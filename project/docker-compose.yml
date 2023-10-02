@@ -1,0 +1,14 @@
+version: "3.8" # doesn't refer to the docker-compose version installed on the machine. Just the file format of a docker-compose.yml file we want to use.
+
+services:
+  web:
+    build: ./project
+    command: uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000
+    # uses to mount code into the container. Without it any changes in the source code would require you to rebuild the docker image
+    volumes:
+      - ./project:/usr/src/app
+    ports:
+      - 8004:8000
+    environment:
+      - ENVIRONMENT=dev
+      - TESTING=0
